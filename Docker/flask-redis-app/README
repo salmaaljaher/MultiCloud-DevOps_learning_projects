@@ -1,0 +1,65 @@
+in this project you will need :
+
+- 2 containers
+
+- pytho using  Flask library 
+
+- Redis server 
+*******************************
+
+*****How it works******
+
+
+first : python flask code 
+
+we will import the library time to give the server 500 milli second to recover if the connection fails 
+
+importing the flask library 
+
+creating a connection to the redis server and using its defualt port 
+
+defining a functioin that set the variable retries to 5 if and error happend we will raise the exeption 
+and substracting 1 from the left tries so the user can try to load the web app 5 times if an error happend 
+
+if the connection was succesfull the visit count will appear in the screen 
+
+if statment to check if the scrip is being run directly if not it will fail 
+this will prevent the application to startup accidently if we were trying to import the python script to a file 
+
+changing the default flask port to 4000
+
+
+
+second : Yaml file 
+
+
+defining two services 
+- web : that will be build at the same location the file in 
+defining the accessable port 9000:4000 , to be able to connect to the webapplication you will use :9000
+associating the redis server to the flask application so if any change in the code happpened that will reflect directly to the web app
+enabling flask debug so if anyerrors happened it will result in a messge 
+
+
+- redis : this is the database server that we will use , version redis:alpine 
+
+
+
+
+
+
+third : Dockerfile 
+
+- using python 3.9-slim 
+- set the main working folder inside the container to /app
+- copy every thing in the working directory to the container's /app folder 
+- installing everything in the file "requiremnets" 
+- expose the webapp to the port 4000 
+- running the application using ppython 
+
+
+
+forth : requirements 
+
+becuase we are going to use flask and redis for our webapp
+
+
